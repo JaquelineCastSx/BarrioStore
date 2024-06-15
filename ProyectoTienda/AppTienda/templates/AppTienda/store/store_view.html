@@ -1,4 +1,39 @@
-<!DOCTYPE html>
+{% extends "AppTienda/master.html" %}
+
+{% block content %}
+
+<div class="main-content">
+    <div class="row position-relative">
+        <div class="col-md-3 m-0">
+            <div class="sidebar position-relative bg-beige m-0 p-3 name">
+                <h5>{{ store.name }}</h5>
+                <img class="rounded w-100" src="{{ store.image_url }}" alt="{{ store.name }}">
+                <p>Categorías: {{ store.categories }}</p>
+                <p>Dirección: {{ store.address }}</p>
+            </div>
+        </div>
+        <div class="col-md-9 m-0">
+            <div class="container bg-beige">
+                <div class="row">
+                    <div class="d-flex justify-content-between flex-wrap">
+                        {% for product in products %}
+                        <div class="product-card w-25 m-2 plain_text">
+                            <a class="nav-link icon" href="{% url 'product_detail' product.id %}">
+                                <img class="w-25" src="{{ product.image_url }}" alt="{{ product.name }}" width="100">
+                                <p>{{ product.name }}</p>
+                                <p>{{ product.description }}</p>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,4 +59,4 @@
         {% endfor %}
     </div>
 </body>
-</html>
+</html> -->

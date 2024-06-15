@@ -38,7 +38,7 @@ def register(request):
                 return redirect('storeHome')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'AppTienda/register.html', {'form': form})
+    return render(request, 'AppTienda/registration/register.html', {'form': form})
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -58,17 +58,17 @@ def login_view(request):
                     return redirect('/')
     else:
         form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
+    return render(request, 'AppTienda/registration/login.html', {'form': form})
 # General Access
 
 def store_list(request):
     stores = Store.objects.all()
     products = [store.product_set.first() for store in stores]
-    return render(request, 'AppTienda/store_list.html', {'stores': stores, 'products': products})
+    return render(request, 'AppTienda/store/store_list.html', {'stores': stores, 'products': products})
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    return render(request, 'AppTienda/product_detail.html', {'product': product})
+    return render(request, 'AppTienda/store/product_detail.html', {'product': product})
 
 
 # Vendor Access Required ONLY
@@ -95,7 +95,7 @@ def manage_store(request):
         else:
             form = StoreForm()
 
-    return render(request, 'AppTienda/manage_store.html', {'form': form})
+    return render(request, 'AppTienda/store/manage_store.html', {'form': form})
 
  
 @login_required
@@ -107,7 +107,7 @@ def vendor_products(request):
     except Store.DoesNotExist:
         return redirect('manage_store')  # Redirige al usuario para que cree su tienda primero
 
-    return render(request, 'AppTienda/vendor_products.html', {'products': products})
+    return render(request, 'AppTienda/store/vendor_products.html', {'products': products})
 
 @login_required
 @user_passes_test_404(user_is_vendor)
@@ -129,7 +129,7 @@ def create_product(request):
 
     categories = Category.objects.all()
 
-    return render(request, 'AppTienda/create_product.html', {'form': form, 'categories': categories})
+    return render(request, 'AppTienda/store/create_product.html', {'form': form, 'categories': categories})
 
 @login_required
 @user_passes_test_404(user_is_vendor)
@@ -144,7 +144,7 @@ def vendor_profile(request):
         'user': user,
         'store': store,
     }
-    return render(request, 'AppTienda/vendor_profile.html', context)
+    return render(request, 'AppTienda/store/vendor_profile.html', context)
 
 # Only customer can access, login is required
 @login_required
@@ -197,9 +197,9 @@ def checkout_views(request):
             item.delete()
         cart.delete()
 
-        return render(request, 'AppTienda/order_success.html')
+        return render(request, 'AppTienda/store/order_success.html')
 
-    return render(request, 'AppTienda/checkout.html', {'cart_items': cart_items, 'total_price': total_price})
+    return render(request, 'AppTienda/store/checkout.html', {'cart_items': cart_items, 'total_price': total_price})
 @login_required
 @user_passes_test_404(user_is_customer)
 def cart_view(request):
@@ -213,7 +213,7 @@ def cart_view(request):
         item.promotion = Promotion.objects.filter(product=item.product).first()
 
     
-    return render(request, 'AppTienda/cart.html', {'cart_items': cart_items, 'total_price': total_price, 'total_products':total_products})
+    return render(request, 'AppTienda/store/cart.html', {'cart_items': cart_items, 'total_price': total_price, 'total_products':total_products})
 @login_required
 @user_passes_test_404(user_is_customer)
 def remove_from_cart(request, item_id, remove_all=False):
@@ -247,12 +247,12 @@ def order_history(request):
             'items': order_items
         })
 
-    return render(request, 'AppTienda/order_history.html', {'orders_data': orders_data})
+    return render(request, 'AppTienda/store/order_history.html', {'orders_data': orders_data})
 @login_required
 def profile_view(request):
     user = request.user  # Obtener el usuario actual
     
-    return render(request, 'AppTienda/profile.html', {'user': user})
+    return render(request, 'AppTienda/store/profile.html', {'user': user})
 
 def store_view(request, store_id):
     store = get_object_or_404(Store, id=store_id)
@@ -263,7 +263,7 @@ def store_view(request, store_id):
         'products': products
     }
 
-    return render(request, 'AppTienda/store_view.html', context)
+    return render(request, 'AppTienda/store/store_view.html', context)
 
 @login_required
 @user_passes_test_404(user_is_vendor)
@@ -289,7 +289,7 @@ def sales_history_view(request):
     except Store.DoesNotExist:
         return redirect('manage_store')  # Redirige al usuario para que cree su tienda primero
     
-    return render(request, 'AppTienda/sales_history.html', {'orders_data': orders_data.values()})
+    return render(request, 'AppTienda/store/sales_history.html', {'orders_data': orders_data.values()})
 
 @login_required
 @user_passes_test_404(user_is_vendor)
@@ -308,7 +308,7 @@ def add_promotion(request):
             return redirect('list_promotions')
     else:
         form = PromotionForm(user=request.user)
-    return render(request, 'AppTienda/add_promotion.html', {'form': form})
+    return render(request, 'AppTienda/store/add_promotion.html', {'form': form})
 
 @login_required
 @user_passes_test_404(user_is_vendor)
@@ -328,11 +328,11 @@ def list_promotions(request):
             promotion.delete()
             return redirect('list_promotions')
 
-    return render(request, 'AppTienda/list_promotions.html', {'promotions': promotions})
+    return render(request, 'AppTienda/store/list_promotions.html', {'promotions': promotions})
 
 def products_with_offers(request):
     promotions = Promotion.objects.all()
-    return render(request, 'AppTienda/products_with_offers.html', {'promotions': promotions})
+    return render(request, 'AppTienda/store/products_with_offers.html', {'promotions': promotions})
 
 
 
@@ -366,4 +366,4 @@ def vendorHome(request):
         'store': store,
     }
 
-    return render(request, 'AppTienda/vendorHome.html', context)
+    return render(request, 'AppTienda/store/vendorHome.html', context)

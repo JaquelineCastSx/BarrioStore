@@ -1,3 +1,12 @@
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 200 to 1000 */
+
+.nunito{
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
 .business-category img, .popular-products img {
     width: 100px;
     height: 100px;
@@ -8,7 +17,6 @@
     text-align: center;
 }
 body {
-    font-family: Arial, sans-serif;
     background-color: #FFFFF9;
     justify-content: center;
     align-items: center;
@@ -131,7 +139,7 @@ body {
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 20px;
-    background-color: #e0f2f1;
+    background-color: #F5F5EA;
     text-align: center;
 }
 .product-card img {
@@ -185,4 +193,22 @@ body {
 }
 .btn-submit:hover {
     background-color: #00695c;
+}
+.name{
+    font-size: small;
+    color: #333;
+}
+.plain_text{
+    font-size: large;
+    color: #333;
+}
+.price {
+    font-size: 1.5rem;
+    color: #26a69a;
+}
+.image_icon{
+    width: 50px;
+}
+.buttons .btn {
+    margin-right: 10px;
 }

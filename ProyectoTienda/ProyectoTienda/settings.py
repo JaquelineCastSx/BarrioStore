@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'BarrioStore',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'Password#1',
         'HOST':'localhost',
         'PORT':'3306',
     }
