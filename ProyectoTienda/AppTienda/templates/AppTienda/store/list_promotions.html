@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+{% extends "AppTienda/master.html" %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="offer-header justify-content-between">
+        <h2>Current Offers</h2>
+        <a href="{% url 'add_promotion' %}" class="btn btn-warning">Add new offer</a>
+    </div>
+    <div class="offers-grid row">
+        <div class="d-flex justify-content-between flex-wrap">
+            {% for promotion in promotions %}
+            <div class=" offer-item">
+                <div class="offer-image">
+                    <img src="{{ promotion.product.image_url}}" alt="Product Image" class="img-fluid">
+                </div>
+                <h5>Producto</h5>
+                <p>Promoción</p>
+                <p>Costo</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Promociones Activas</title>
@@ -20,4 +47,4 @@
         </div>
     {% endfor %}
 </body>
-</html>
+</html> -->

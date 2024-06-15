@@ -1,4 +1,51 @@
-<!DOCTYPE html>
+{% extends "AppTienda/master.html" %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Lo más vendido section
+    <div class="row top-sellers text-center">
+        <div class="col-md-4">
+            <div class="card"></div>
+        </div>
+        <div class="col-md-4">
+            <div class="card"></div>
+        </div>
+        <div class="col-md-4">
+            <div class="card"></div>
+        </div>
+    </div> -->
+
+    <!-- Ventas del mes section -->
+    <div class="row sales-of-the-month">
+        <div class="d-flex justify-content-between flex-wrap">
+            {% if orders_data %}
+                {% for order in orders_data %}
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nombre de producto</h5>
+                                    <p class="card-text">Productos vendidos</p>
+                                    <p class="card-text">Costo</p>
+                                    <p class="card-text">Descripcion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hay ventas para mostrar.</p>
+            {% endif %}
+        </div>
+        
+    </div>
+</div>
+    
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,4 +78,4 @@
         <p>No hay ventas para mostrar.</p>
     {% endif %}
 </body>
-</html>
+</html> -->

@@ -16,19 +16,28 @@
     <header class="bg-danger text-white py-1">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="d-flex align-items-center">
-                <a href="{% url 'index' %}"><img src="{% static 'logo.jpeg'%}" alt="logo" width="30" class="mr-3"></a>
-                <input type="search" class="form-control my-1" placeholder="Buscar...">
-                <i class="bi bi-search mx-2"></i>
+                <a href="{% url 'vendorHome' %}"><img src="{% static 'logo.jpeg'%}" alt="logo" width="30" class="mr-3"></a>
+                <!-- Add an item that sends to the browser of the page -->
+                <a class="navbar-brand" href="{% url 'search_stores' %}">Search Stores <i class="bi bi-search mx-2"></i></a>
             </div>
             {% if user.is_authenticated %}
                 {% if user.role == 'vendor' %}
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto px-3">
                         <li class="nav-item">
+                            <a class="nav-link icon" href="{% url 'vendorHome' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link icon" href="{% url 'manage_store' %}">Manage Store</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link icon" href="{% url 'vendor_products' %}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon" href="{% url 'list_promotions' %}">Current Offers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon" href="{% url 'sales_history' %}">My Sales</a>
                         </li>
                     </ul>
 
@@ -39,13 +48,13 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto px-3">
                         <li class="nav-item">
-                            <a class="nav-link icon" href="{% url 'index' %}">Inicio</a>
+                            <a class="nav-link icon" href="{% url 'index' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link icon" href="{% url 'order_history' %}">Mis Pedidos</a>
+                            <a class="nav-link icon" href="{% url 'order_history' %}">My orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link icon" href="{% url 'products_with_offers' %}">Ofertas</a>
+                            <a class="nav-link icon" href="{% url 'products_with_offers' %}">Sales</a>
                         </li>
                     </ul>
 
@@ -57,13 +66,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto px-3">
                     <li class="nav-item">
-                        <a class="nav-link icon" href="{% url 'index' %}">Inicio</a>
+                        <a class="nav-link icon" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link icon" href="{% url 'login' %}">Mis Pedidos</a>
+                        <a class="nav-link icon" href="{% url 'login' %}">My orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link icon" href="{% url 'login' %}">Ofertas</a>
+                        <a class="nav-link icon" href="{% url 'login' %}">Sales</a>
                     </li>
                 </ul>
 

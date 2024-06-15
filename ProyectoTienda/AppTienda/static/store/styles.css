@@ -22,6 +22,11 @@ body {
     align-items: center;
     height: 100vh;   
 }
+.section-title {
+    margin: 20px;
+    font-size: 1.5em;
+    color: #333;
+}
 .container {
     display: flex;
     align-items: start;
@@ -212,3 +217,40 @@ body {
 .buttons .btn {
     margin-right: 10px;
 }
+.offers-grid {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+}
+.offer-item {
+    background-color: #00897b;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.offer-item h5 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.offer-item p {
+    margin: 0;
+}
+.top-sellers {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+.top-sellers .card {
+    background-color: #008080;
+    height: 150px;
+}
+.sales-of-the-month {
+    padding: 20px 0;
+}
+.sales-of-the-month .card {
+    background-color: #ffc107;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+

@@ -345,7 +345,7 @@ def search_stores(request):
         Q(name__icontains=query)
     )
     
-    return render(request, 'AppTienda/search_results.html', {'stores': stores, 'query': query})
+    return render(request, 'AppTienda/store/search_results.html', {'stores': stores, 'query': query})
 
 def error_404_view(request, exception=None):
     return render(request, 'AppTienda/404.html', {})
