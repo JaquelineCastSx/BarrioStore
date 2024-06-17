@@ -1,4 +1,40 @@
-<!DOCTYPE html>
+{% extends "AppTienda/master.html" %}
+
+{% block content %}
+
+<div class="m-5">
+    <h2 class="order-title">Mis Pedidos</h2>
+    <div class="row p-2 m-2">
+        {% for order_data in orders_data %}
+        <div class="card order-card w-75">
+            <div class="card-header">
+                <div>
+                    <small class="text-muted">Order date</small>
+                    <p class="mb-0">{{ order_data.order.order_date }}</p>
+                </div>
+                <div>
+                    <small class="text-muted">Total</small>
+                    <p class="mb-0">${{ order_data.order.total_price }}</p>
+                </div>
+            </div>
+            {% for item in order_data.items %}
+            <div class="card-body">
+                <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
+                <div>
+                    <h5>{{ item.product.name }}</h5>
+                    <p>{{ item.product.store.name }}</p>
+                    <p>Cost per Item: ${{ item.price }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+{% endblock %}
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Historial de Pedidos</title>
@@ -41,4 +77,4 @@
         </div>
     {% endfor %}
 </body>
-</html>
+</html> -->

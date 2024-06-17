@@ -3,21 +3,28 @@
 {% block content %}
 
 
-<div class="container">
-    <div class="offer-header justify-content-between">
+<div class="m-4">
+    <div class="row justify-content-between m-2">
         <h2>Current Offers</h2>
         <a href="{% url 'add_promotion' %}" class="btn btn-warning">Add new offer</a>
     </div>
-    <div class="offers-grid row">
+    <div class="row m-2 p-2">
         <div class="d-flex justify-content-between flex-wrap">
             {% for promotion in promotions %}
-            <div class=" offer-item">
-                <div class="offer-image">
+            <div class="offer-item justify-content-start w-25">
+                <div class="offer-image w-75">
                     <img src="{{ promotion.product.image_url}}" alt="Product Image" class="img-fluid">
                 </div>
-                <h5>Producto</h5>
-                <p>Promoción</p>
-                <p>Costo</p>
+                <h5>{{ promotion.product.name }}</h5>
+                <p><strong>Discount: </strong>${{ promotion.discount }}</p>
+                <p><strong>Start date:</strong> {{ promotion.start_date }}</p>
+                <p><strong>End Date:</strong> {{ promotion.end_date }}</p>
+                <p><strong>Creation date:</strong> {{ promotion.created_at }}</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="promotion_id" value="{{ promotion.id }}">
+                    <button class="btn btn-primary" type="submit">Terminar Promoción</button>
+                </form>
             </div>
             {% endfor %}
         </div>

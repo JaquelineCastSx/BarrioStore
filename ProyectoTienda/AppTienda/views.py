@@ -35,14 +35,14 @@ def register(request):
             if user.role == 'vendor':
                 return redirect('vendorHome')
             else:
-                return redirect('storeHome')
+                return redirect('index')
     else:
         form = CustomUserCreationForm()
     return render(request, 'AppTienda/registration/register.html', {'form': form})
 
 def login_view(request):
     if request.user.is_authenticated:
-        return HttpResponseForbidden("You are already logged in.")
+        return redirect('/')
     
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
