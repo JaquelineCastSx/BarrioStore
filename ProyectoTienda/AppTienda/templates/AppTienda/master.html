@@ -15,14 +15,14 @@
 <body class="nunito">
     <header class="bg-danger text-white py-1">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="d-flex align-items-center">
-                <a href="{% url 'index' %}"><img src="{% static 'logo.jpeg'%}" alt="logo" width="30" class="mr-3"></a>
-                <!-- Add an item that sends to the browser of the page -->
-                <a class="navbar-brand" href="{% url 'search_stores' %}">Search Stores <i class="bi bi-search mx-2"></i></a>
-            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
             {% if user.is_authenticated %}
                 {% if user.role == 'vendor' %}
-                <div class="collapse navbar-collapse">
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'vendorHome' %}"><img src="{% static 'logo.jpeg'%}" alt="logo" width="30" class="mr-3"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto px-3">
                         <li class="nav-item">
                             <a class="nav-link icon" href="{% url 'vendorHome' %}">Home</a>
@@ -45,7 +45,12 @@
                 </div>
                 {% endif %}
                 {% if user.role == 'customer' %}
-                <div class="collapse navbar-collapse">
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'index' %}"><img src="{% static 'logo.jpeg'%}" alt="logo" width="30" class="mr-3"></a>
+                    <!-- Add an item that sends to the browser of the page -->
+                    <a class="navbar-brand" href="{% url 'search_stores' %}">Search Stores <i class="bi bi-search mx-2"></i></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto px-3">
                         <li class="nav-item">
                             <a class="nav-link icon" href="{% url 'index' %}">Home</a>
@@ -63,7 +68,12 @@
                 </div>
                 {% endif %}
             {% else %}
-            <div class="collapse navbar-collapse">
+            <div class="d-flex align-items-center">
+                <a href="{% url 'index' %}"><img src="{% static 'logo.jpeg'%}" alt="logo" width="30" class="mr-3"></a>
+                <!-- Add an item that sends to the browser of the page -->
+                <a class="navbar-brand" href="{% url 'search_stores' %}">Search Stores <i class="bi bi-search mx-2"></i></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto px-3">
                     <li class="nav-item">
                         <a class="nav-link icon" href="{% url 'index' %}">Home</a>

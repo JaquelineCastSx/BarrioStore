@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        {% if ShoppingCart != 'created' %}
+        {% if cart_items %}
         <div class="col-md-8">
             <div class="card mb-4">
                 <div class="card-header">
@@ -51,6 +51,11 @@
                 <h5>Total: ${{ total_price }}</h5>
                 <a href="{% url 'checkout' %}" class="btn btn-primary btn-block mt-3">Proceder al pago</a>
             </div>
+        </div>
+        {% else %}
+        <div>
+            <h2>Tu carrito de compras está vacío.</h2>
+            <a href="{% url 'index' %}" class="btn btn-warning">Volver</a>
         </div>
         {% endif %}
     </div>

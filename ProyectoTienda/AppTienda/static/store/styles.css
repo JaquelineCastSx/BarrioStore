@@ -206,6 +206,12 @@ body {
 .plain_text{
     font-size: large;
     color: #333;
+    text-decoration: none;
+}
+.plain_text:hover{
+    cursor: pointer;
+    color: #F0AF33;
+    text-decoration: none;
 }
 .price {
     font-size: 1.5rem;
@@ -225,7 +231,7 @@ body {
 .offer-item {
     background-color: #00897b;
     border-radius: 10px;
-    text-align: center;
+    text-align: start;
     padding: 20px;
     color: #fff;
     margin-bottom: 20px;
@@ -330,4 +336,72 @@ body {
 }
 .order-card .card-body p {
     margin: 0;
+}
+.description_text{
+    font-size: small;
+    color: #333;
+}
+.product{
+    background-color: #26a69a;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.w-30{
+    width: 30%;
+}
+.search-container {
+    text-align: center;
+    justify-content: center;
+}
+.search-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.search-container input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.search-container button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #c62828;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search-container button:hover {
+    background-color: #b71c1c;
+}
+.results-container {
+    margin: 20px ;
+    text-align: left;
+}
+.results-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.store-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #666;
+}
+.store-item img {
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.store-item a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #c62828;
+    text-decoration: none;
+}
+.store-item a:hover {
+    color: #26a69a;
 }

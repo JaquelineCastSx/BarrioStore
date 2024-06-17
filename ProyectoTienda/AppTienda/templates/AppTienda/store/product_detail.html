@@ -22,7 +22,7 @@
             {% else %}
                 <p>Agotado</p>
             {% endif %}
-            <p><a href="{{ product.store.google_maps_link }}">{{ product.store.address }}</a></p>
+            <p><a target="_blank" href="{{ product.store.google_maps_link }}">{{ product.store.address }}</a></p>
             <div class="buttons">
                 <form class="btn" method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}

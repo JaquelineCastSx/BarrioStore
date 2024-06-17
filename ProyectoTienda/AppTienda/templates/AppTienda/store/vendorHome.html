@@ -10,7 +10,7 @@
                 <p><strong>Name: </strong>{{ store.name }}</p>
                 <p><strong>Description:</strong> {{ store.description }}</p>
                 <p><strong>Address:</strong> {{ store.address }}</p>
-                <p><strong>Google Maps Link:</strong> {{ store.google_maps_link }}</p>
+                <strong>Google Maps Link:</strong><a href="{{ store.google_maps_link }}" target="_blank"><p> {{ store.google_maps_link }}</p></a>
                 <p><strong>Created At:</strong> {{ store.created_at }}</p>
 
             </div>
