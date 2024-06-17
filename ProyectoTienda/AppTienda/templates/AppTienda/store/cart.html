@@ -28,12 +28,12 @@
                         <div class="buttons">
                             <form class="btn" method="post" action="{% url 'remove_from_cart' item.id %}">
                                 {% csrf_token %}
-                                <button class="btn btn-danger" type="submit"><small>Eliminar Todos</small></button>
+                                <button class="btn btn-danger text-white" type="submit"><small>Eliminar Todos</small></button>
                             </form>
                             
                             <form class="btn" method="post" action="{% url 'remove_from_carts' item.id %}">
                                 {% csrf_token %}
-                                <button class="btn btn-info" type="submit"><small>Eliminar 1</small></button>
+                                <button class="btn btn-info text-white" type="submit"><small>Eliminar 1</small></button>
                             </form>
                         </div>
                     </div>

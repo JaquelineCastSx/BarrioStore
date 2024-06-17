@@ -25,7 +25,7 @@ def user_is_admin(user):
 
 def register(request):
     if request.user.is_authenticated:
-        return HttpResponseForbidden("You are already registered.")
+        return redirect('/')
     
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -213,7 +213,7 @@ def cart_view(request):
         item.promotion = Promotion.objects.filter(product=item.product).first()
 
     
-    return render(request, 'AppTienda/cart.html', {'cart_items': cart_items, 'total_price': total_price, 'total_products': total_products})
+    return render(request, 'AppTienda/store/cart.html', {'cart_items': cart_items, 'total_price': total_price, 'total_products': total_products})
 @login_required
 @user_passes_test_404(user_is_customer)
 def remove_from_cart(request, item_id, remove_all=False):
