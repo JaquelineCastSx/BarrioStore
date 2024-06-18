@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        
+
         <div class="col-md-6">
             <div class="card p-2">
                 <h5>Resumen de compra</h5>
@@ -21,7 +21,15 @@
                         </div>
                         <div class="price">${{ item.product.price }}</div>
                         {% if item.promotion %}
-                            <p>Promoción: {{ item.promotion.id }}</p>
+                        <p>Promoción: {{ item.promotion.id }}</p>
+                        {% endif %}
+
+                        {% if messages %}
+                        <div>
+                            {% for message in messages %}
+                            <p style="color: red;">{{ message }}</p>
+                            {% endfor %}
+                        </div>
                         {% endif %}
                     </div>
                     {% endfor %}
@@ -45,11 +53,12 @@
                 </div>
                 <div class="form-group">
                     <label for="card_number">Número de tarjeta</label>
-                    <input type="text" class="form-control" id="card_number" name="card_number" placeholder="Ex. 0099">
+                    <input type="number" class="form-control" id="card_number" name="card_number"
+                        placeholder="Ex. 0099">
                 </div>
                 <div class="form-group">
                     <label for="address">Dirección de Entrega:</label>
-                <input type="text" class="form-control" id="address" name="address" required>
+                    <input type="text" class="form-control" id="address" name="address" required>
                 </div>
                 <div class="text-center mt-4 d-flex flex-row-reverse">
                     <button type="submit" class="btn btn-primary btn-lg">Pagar</button>
@@ -57,7 +66,7 @@
             </form>
         </div>
     </div>
-    
+
 </div>
 {% endblock %}
 
